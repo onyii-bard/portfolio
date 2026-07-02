@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Onyinye Ojukwu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #F4A261;
+      --secondary: #E76F51;
+      --dark: #264653;
+      --text: #1a1a1a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      background: #f7f7f5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      height: 64px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--primary); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .nav-links a.active { color: var(--text); font-weight: 700; }
+
+    .nav-cta {
+      background: var(--secondary);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      padding: 88px 48px 60px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 36px;
+    }
+
+    /* ── CARD GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* ── PROJECT CARD ── */
+    .pcard {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+    }
+
+    /* Card tinted header */
+    .pcard-top {
+      padding: 24px 24px 20px;
+      position: relative;
+    }
+
+    .pcard-gonomad .pcard-top       { background: #FEF0E8; }
+    .pcard-rocketdevs .pcard-top   { background: #E8F0F2; }
+    .pcard-hivemind .pcard-top     { background: #FEF0E8; }
+    .pcard-bamibrands .pcard-top   { background: #E8F0F2; }
+    .pcard-pullencreatives .pcard-top { background: #FEF0E8; }
+    .pcard-kijagold .pcard-top      { background: #E8F0F2; }
+
+    /* Logo badge floating top-right */
+    .pcard-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,0.8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+
+    .pcard-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pcard-company {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .pcard-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-right: 52px;
+    }
+
+    .pcard-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .ptag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(0,0,0,0.07);
+      color: #444;
+    }
+
+    /* Card body */
+    .pcard-body {
+      padding: 16px 24px 20px;
+    }
+
+    /* Achievement rows */
+    .achievement {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    .achievement:last-of-type { border-bottom: none; }
+
+    .ach-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ach-stat {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .ach-desc {
+      font-size: 12px;
+      color: #777;
+      line-height: 1.5;
+      margin-top: 1px;
+    }
+
+    /* ── PROOF STRIP PORTRAIT (overlapping portrait screenshots) ── */
+    .proof-grid {
+      position: relative;
+      height: 150px;
+      margin: 4px 24px 20px;
+      overflow: hidden;
+    }
+
+    .proof-grid img {
+      position: absolute;
+      width: 95px;
+      height: 150px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      border: 2px solid #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), z-index 0s, box-shadow 0.25s ease;
+      cursor: default;
+    }
+
+    .proof-grid img:nth-child(1) { left: 0px;   top: 0px;  transform: rotate(-2deg);   z-index: 1; }
+    .proof-grid img:nth-child(2) { left: 68px;  top: 6px;  transform: rotate(1.5deg);  z-index: 2; }
+    .proof-grid img:nth-child(3) { left: 136px; top: -3px; transform: rotate(-1deg);   z-index: 3; }
+    .proof-grid img:nth-child(4) { left: 204px; top: 5px;  transform: rotate(2deg);    z-index: 4; }
+    .proof-grid img:nth-child(5) { left: 272px; top: -2px; transform: rotate(-1.5deg); z-index: 5; }
+    .proof-grid img:nth-child(6) { left: 340px; top: 4px;  transform: rotate(1deg);    z-index: 6; }
+
+    .proof-grid img:hover {
+      transform: rotate(0deg) translateY(-18px) scale(1.1) !important;
+      z-index: 20 !important;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+
+    /* ── PROOF STRIP ── */
+    .proof-strip {
+      position: relative;
+      height: 110px;
+      margin: 4px 24px 20px;
+      overflow: visible;
+    }
+
+    .proof-img {
+      position: absolute;
+      width: 190px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.13);
+      border: 2px solid #fff;
+      object-fit: cover;
+      height: 110px;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), z-index 0s, box-shadow 0.25s ease;
+      cursor: default;
+    }
+
+    .proof-img:nth-child(1) { left: 0;    top: 0; transform: rotate(-2.5deg); z-index: 1; }
+    .proof-img:nth-child(2) { left: 120px; top: 6px; transform: rotate(1.2deg);  z-index: 2; }
+    .proof-img:nth-child(3) { left: 240px; top: -4px; transform: rotate(-1deg); z-index: 3; }
+
+    .proof-img:hover {
+      transform: rotate(0deg) translateY(-16px) scale(1.09) !important;
+      z-index: 20 !important;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+
+    .proof-label {
+      position: absolute;
+      right: 0;
+      bottom: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">Onyinye<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="hire.html" class="nav-cta">Hire me</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <h1 class="page-title">The Work.</h1>
+    <p class="page-sub">A look at who I worked with, what I built, and what happened because of it.</p>
+
+    <div class="cards-grid">
+
+      <!-- ── GONOMAD ── -->
+      <div class="pcard pcard-gonomad">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/10.png" alt="GoNomad"></div>
+          <div class="pcard-company">GoNomad · Feb 2023 – Sept 2025</div>
+          <h2 class="pcard-title">Content, SEO &<br>Email Marketing</h2>
+          <div class="pcard-tags">
+            <span class="ptag">Content Marketing</span>
+            <span class="ptag">SEO / AEO</span>
+            <span class="ptag">Email Marketing</span>
+            <span class="ptag">CRM</span>
+            <span class="ptag">Copywriting</span>
+            <span class="ptag">Growth</span>
+          </div>
+        </div>
+
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E8EFFF;">✅</div>
+            <div>
+              <div class="ach-stat">18.35% open rate, 5,070 subscribers</div>
+              <div class="ach-desc">Weekly email campaigns written, built, and tracked entirely by me. Consistent delivery, story-driven subject lines.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E8EFFF;">✅</div>
+            <div>
+              <div class="ach-stat">33.1k impressions in 7 days</div>
+              <div class="ach-desc">Blog SEO content showing in Search Console. Avg. position 11. Page 1 ranking for targeted articles.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E8EFFF;">✅</div>
+            <div>
+              <div class="ach-stat">Full marketing ops ownership</div>
+              <div class="ach-desc">Managed CRM (Zoho + FluentCRM), email flows, editorial calendar, Meta ads support, and weekly reporting.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-strip">
+          <img class="proof-img" src="assets/images/gonomad/Screenshot 2026-06-27 at 19.30.01.png" alt="Email report">
+          <img class="proof-img" src="assets/images/gonomad/356.png" alt="Search Console">
+          <img class="proof-img" src="assets/images/gonomad/IMG_6712.PNG" alt="Email campaigns">
+          
+        </div>
+      </div>
+
+      <!-- ── ROCKETDEVS ── -->
+      <div class="pcard pcard-rocketdevs">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/12.png" alt="RocketDevs"></div>
+          <div class="pcard-company">RocketDevs · June 2024 – Aug 2025</div>
+          <h2 class="pcard-title">Organic Growth &<br>Demand Generation</h2>
+          <div class="pcard-tags">
+            <span class="ptag">SEO / AEO</span>
+            <span class="ptag">Content Strategy</span>
+            <span class="ptag">Community Growth</span>
+            <span class="ptag">Reddit Marketing</span>
+            <span class="ptag">Demand Gen</span>
+          </div>
+        </div>
+
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FDEAE4;">✅</div>
+            <div>
+              <div class="ach-stat">Ranked in Google's AI Overview</div>
+              <div class="ach-desc">Content I wrote was selected by Google AI to answer founder search queries. The hardest organic placement to earn.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FDEAE4;">✅</div>
+            <div>
+              <div class="ach-stat">Page 1 organic ranking</div>
+              <div class="ach-desc">"Gigster vs Upwork: 2025 Full Comparison," an SEO-driven piece targeting startup founders seeking dev talent.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FDEAE4;">✅</div>
+            <div>
+              <div class="ach-stat">Community-led growth via Reddit</div>
+              <div class="ach-desc">Built and managed founder community engagement strategy across startup & SaaS subreddits. Drove qualified traffic with zero ad spend.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-strip">
+          <img class="proof-img" src="assets/images/rocketdevs/Screenshot 2026-06-27 at 18.30.37.png" alt="AI Overview">
+          <img class="proof-img" src="assets/images/rocketdevs/Screenshot 2026-06-27 at 19.16.29.png" alt="Reddit">
+          <img class="proof-img" src="assets/images/rocketdevs/Screenshot 2026-06-27 at 19.16.52.png" alt="Reddit 2">
+          
+        </div>
+      </div>
+
+      <!-- ── HIVEMIND ── -->
+      <div class="pcard pcard-hivemind">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/11.png" alt="Hivemind HR"></div>
+          <div class="pcard-company">Hivemind HR · Nov 2024 – Present</div>
+          <h2 class="pcard-title">Product Marketing &<br>Partnerships</h2>
+          <div class="pcard-tags">
+            <span class="ptag">Product Marketing</span>
+            <span class="ptag">Demand Gen</span>
+            <span class="ptag">Partnerships</span>
+            <span class="ptag">Product Hunt</span>
+            <span class="ptag">Creator Programs</span>
+          </div>
+        </div>
+
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E0EDEF;">✅</div>
+            <div>
+              <div class="ach-stat">Product of the Day on Product Hunt</div>
+              <div class="ach-desc">Planned and executed the full Product Hunt launch strategy. Coordinated community engagement and launch-day promotion to secure Product of the Day recognition.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E0EDEF;">✅</div>
+            <div>
+              <div class="ach-stat">3 podcast appearances secured, Q1 2026</div>
+              <div class="ach-desc">Outreach and partnership efforts resulted in Hivemind being booked across 3 podcasts in a single quarter. Recognized publicly by the team for LinkedIn hustle driving real pipeline.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#E0EDEF;">✅</div>
+            <div>
+              <div class="ach-stat">55+ creator partner pipeline managed</div>
+              <div class="ach-desc">Built and ran the creator and B2B partnership program. Managed outreach pipeline, content calendars, and partner relationships across multiple channels.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-strip">
+          <img class="proof-img" src="assets/images/hivemind/Screenshot 2026-06-27 at 23.27.09.png" alt="Partner pipeline">
+          <img class="proof-img" src="assets/images/hivemind/Screenshot 2026-06-27 at 23.27.29.png" alt="Content calendar">
+          <img class="proof-img" src="assets/images/hivemind/Screenshot 2026-05-31 at 11.53.16.png" alt="Team shoutout">
+          
+        </div>
+      </div>
+
+      <!-- ── BAMIBRANDS ── -->
+      <div class="pcard pcard-bamibrands">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/9.png" alt="BamiBrands"></div>
+          <div class="pcard-company">BamiBrands · Sept 2024 – May 2026</div>
+          <h2 class="pcard-title">Project Management &<br>Client Success</h2>
+          <div class="pcard-tags">
+            <span class="ptag">Project Management</span>
+            <span class="ptag">Client Success</span>
+            <span class="ptag">Content Production</span>
+            <span class="ptag">Personal Branding</span>
+          </div>
+        </div>
+
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#EDFAF1;">✅</div>
+            <div>
+              <div class="ach-stat">15+ client brands delivered</div>
+              <div class="ach-desc">Managed end-to-end personal branding programs for 15+ business owners and professionals across YouTube, TikTok, Instagram, and LinkedIn.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#EDFAF1;">✅</div>
+            <div>
+              <div class="ach-stat">Full creative team coordination</div>
+              <div class="ach-desc">Coordinated scriptwriters, designers, and video editors across simultaneous client accounts. Maintained timelines and ensured on-time delivery without gaps.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#EDFAF1;">✅</div>
+            <div>
+              <div class="ach-stat">Strategy to execution ownership</div>
+              <div class="ach-desc">Acted as the primary bridge between clients and creative teams. Translated business goals into content briefs and oversaw quality control using Notion and Google Suite.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-strip">
+          <img class="proof-img" src="assets/images/bamibrands/Screenshot 2026-06-06 at 23.15.57.png" alt="Content tracker">
+          <img class="proof-img" src="assets/images/bamibrands/Screenshot 2026-06-06 at 23.16.31.png" alt="Bami HQ">
+          <img class="proof-img" src="assets/images/bamibrands/Screenshot 2026-06-27 at 23.48.47.png" alt="Client DMs">
+          
+        </div>
+      </div>
+
+      <!-- ── PULLEN CREATIVES ── -->
+      <div class="pcard pcard-pullencreatives">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/6.png" alt="Pullen Creatives"></div>
+          <div class="pcard-company">Pullen Creatives · Jan 2021 – Oct 2022</div>
+          <h2 class="pcard-title">Community Management &<br>Social Media Marketing</h2>
+          <div class="pcard-tags">
+            <span class="ptag">Community Management</span>
+            <span class="ptag">Social Media</span>
+            <span class="ptag">Content Strategy</span>
+            <span class="ptag">Analytics</span>
+            <span class="ptag">Copywriting</span>
+          </div>
+        </div>
+
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF1E6;">✅</div>
+            <div>
+              <div class="ach-stat">Multi-brand account management</div>
+              <div class="ach-desc">Ran social media for Afrocritik (14.2K followers), Velvot, Red Charkoal, Ajebuta Foods, and Pullen Creatives, across tech, food, entertainment, and lifestyle.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF1E6;">✅</div>
+            <div>
+              <div class="ach-stat">Full content and community pipeline</div>
+              <div class="ach-desc">Built content calendars, wrote copy, planned engagement campaigns, monitored community sentiment, and delivered weekly performance reports for each client.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF1E6;">✅</div>
+            <div>
+              <div class="ach-stat">Promoted to Digital Marketing Specialist</div>
+              <div class="ach-desc">Grew from Community Manager into a broader digital marketing role, taking on platform strategy, analytics, SEO, and campaign execution across all accounts.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof-grid">
+          <img src="assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.07 AM.jpeg" alt="Afrocritik">
+          <img src="assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.08 AM.jpeg" alt="Pullen Creatives">
+          <img src="assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM.jpeg" alt="Red Charkoal">
+          <img src="assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM (1).jpeg" alt="Ajebuta Foods">
+          <img src="assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM (3).jpeg" alt="Velvot">
+        </div>
+      </div>
+
+      <!-- ── KIJAGOLD ── -->
+      <div class="pcard pcard-kijagold">
+        <div class="pcard-top">
+          <div class="pcard-logo"><img src="assets/images/14.png" alt="Kijagold"></div>
+          <div class="pcard-company">Kijagold Network · May 2023 – Aug 2023</div>
+          <h2 class="pcard-title">Social Media Management &amp;<br>Content Writing</h2>
+          <div class="pcard-tags">
+            <span class="ptag">Social Media</span>
+            <span class="ptag">Content Writing</span>
+            <span class="ptag">Community Management</span>
+            <span class="ptag">Analytics</span>
+            <span class="ptag">Growth</span>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF8E6;">✅</div>
+            <div>
+              <div class="ach-stat">40% growth across all social metrics</div>
+              <div class="ach-desc">Across all managed accounts, follower count, reach, engagement rate, and impressions grew by an average of 40% over the engagement period.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF8E6;">✅</div>
+            <div>
+              <div class="ach-stat">Multi-brand account management</div>
+              <div class="ach-desc">Managed social media for Beauty by AD (165K followers), The BallRoom Abuja, Shop My Fave, Virtual Tax Express, Tutu's Foods, and Nurtur'd Designs across Instagram, TikTok, Facebook, and Twitter.</div>
+            </div>
+          </div>
+          <div class="achievement">
+            <div class="ach-icon" style="background:#FFF8E6;">✅</div>
+            <div>
+              <div class="ach-stat">Content strategy and KPI delivery</div>
+              <div class="ach-desc">Built content calendars, wrote copy, and tailored platform-specific strategies for each brand. Met and exceeded KPIs for each account throughout the engagement.</div>
+            </div>
+          </div>
+        </div>
+        <div class="proof-grid">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.09 AM (2).jpeg" alt="Beauty by AD">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.09 AM (4).jpeg" alt="Tutu's Foods">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.10 AM.jpeg" alt="Nurtur'd Designs">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.10 AM (1).jpeg" alt="Virtual Tax Express">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.11 AM.jpeg" alt="Shop My Fave">
+          <img src="assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.11 AM (1).jpeg" alt="The BallRoom Abuja">
+        </div>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+
+  <!-- ── WALL OF EVIDENCE ── -->
+  <section class="evidence-section">
+    <div class="evidence-header">
+      <h2 class="evidence-heading">I call this my evidence wall.</h2>
+      <p class="evidence-sub">I can certainly say that I'm proud of the things I have done 😊</p>
+    </div>
+
+    <!-- Row 1: scrolls left -->
+    <div class="evidence-wrap">
+      <div class="evidence-row row-left" id="evidenceRow1"></div>
+    </div>
+
+    <!-- Row 2: scrolls right -->
+    <div class="evidence-wrap">
+      <div class="evidence-row row-right" id="evidenceRow2"></div>
+    </div>
+
+    <!-- Row 3: scrolls left, slower -->
+    <div class="evidence-wrap">
+      <div class="evidence-row row-left-slow" id="evidenceRow3"></div>
+    </div>
+  </section>
+
+  <style>
+    .evidence-section {
+      padding: 12px 0 60px;
+      background: #f7f7f5;
+      overflow: hidden;
+    }
+
+    .evidence-header {
+      text-align: center;
+      padding: 0 48px;
+      margin-bottom: 36px;
+    }
+
+    .evidence-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .evidence-sub {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .evidence-wrap {
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .evidence-row {
+      display: flex;
+      width: max-content;
+      gap: 10px;
+      padding: 4px 0;
+    }
+
+    .evidence-row.row-left      { animation: ev-left  45s linear infinite; }
+    .evidence-row.row-right     { animation: ev-right 38s linear infinite; }
+    .evidence-row.row-left-slow { animation: ev-left  55s linear infinite; }
+
+    @keyframes ev-left  { 0% { transform: translateX(0); }    100% { transform: translateX(-50%); } }
+    @keyframes ev-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+    .evidence-img {
+      height: 180px;
+      width: 260px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .evidence-img.portrait {
+      width: 130px;
+    }
+  </style>
+
+  <script>
+    const row1imgs = [
+      { src: 'assets/images/gonomad/Screenshot 2026-06-27 at 19.30.01.png' },
+      { src: 'assets/images/gonomad/356.png' },
+      { src: 'assets/images/gonomad/IMG_6712.PNG' },
+      { src: 'assets/images/hivemind/Screenshot 2026-06-27 at 23.27.09.png' },
+      { src: 'assets/images/rocketdevs/Screenshot 2026-06-27 at 18.30.37.png' },
+      { src: 'assets/images/bamibrands/Screenshot 2026-06-06 at 23.15.57.png' },
+      { src: 'assets/images/gonomad/Screenshot 2026-06-27 at 18.13.22.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-05-31 at 11.51.51.png' },
+      { src: 'assets/images/bamibrands/Screenshot 2026-06-27 at 23.48.47.png' },
+      { src: 'assets/images/gonomad/IMG_6713.PNG' },
+      { src: 'assets/images/hivemind/Screenshot 2026-06-15 at 19.00.48.png' },
+      { src: 'assets/images/TedxUniversityofBenin/Screenshot 2026-06-15 at 23.02.15.png' },
+      { src: 'assets/images/gonomad/Screenshot 2026-06-27 at 18.03.19.png' },
+    ];
+
+    const row2imgs = [
+      { src: 'assets/images/hivemind/Screenshot 2026-06-27 at 23.27.29.png' },
+      { src: 'assets/images/rocketdevs/Screenshot 2026-06-27 at 19.16.29.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-06-27 at 23.28.13.png', portrait: true },
+      { src: 'assets/images/rocketdevs/Screenshot 2026-06-27 at 19.16.52.png', portrait: true },
+      { src: 'assets/images/bamibrands/Screenshot 2026-06-06 at 23.16.31.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-05-31 at 11.52.01.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-06-27 at 23.27.21.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-05-31 at 11.53.16.png' },
+      { src: 'assets/images/gonomad/Screenshot 2026-06-15 at 21.38.21.png' },
+      { src: 'assets/images/gonomad/Screenshot 2026-06-15 at 21.39.33.png' },
+      { src: 'assets/images/gonomad/Screenshot 2026-06-15 at 21.39.43.png' },
+      { src: 'assets/images/rocketdevs/Screenshot 2026-06-15 at 21.14.35.png' },
+      { src: 'assets/images/hivemind/Screenshot 2026-06-15 at 20.47.03.png' },
+      { src: 'assets/images/gonomad/IMG_6714.PNG' },
+    ];
+
+    const row3imgs = [
+      { src: 'assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.07 AM.jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.09 AM (2).jpeg', portrait: true },
+      { src: 'assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.08 AM.jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.09 AM (4).jpeg', portrait: true },
+      { src: 'assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM.jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.10 AM.jpeg', portrait: true },
+      { src: 'assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM (1).jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.10 AM (1).jpeg', portrait: true },
+      { src: 'assets/images/pullencreatives/WhatsApp Image 2026-06-28 at 12.46.09 AM (3).jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.11 AM.jpeg', portrait: true },
+      { src: 'assets/images/kijagold/WhatsApp Image 2026-06-28 at 12.46.11 AM (1).jpeg', portrait: true },
+      { src: 'assets/images/TedxUniversityofBenin/tedx-social-1.webp', portrait: true },
+      { src: 'assets/images/TedxUniversityofBenin/tedx-social-2.webp', portrait: true },
+    ];
+
+    function buildRow(id, imgs) {
+      const el = document.getElementById(id);
+      // duplicate for seamless loop
+      [...imgs, ...imgs].forEach(({ src, portrait }) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'evidence-img' + (portrait ? ' portrait' : '');
+        img.alt = '';
+        el.appendChild(img);
+      });
+    }
+
+    buildRow('evidenceRow1', row1imgs);
+    buildRow('evidenceRow2', row2imgs);
+    buildRow('evidenceRow3', row3imgs);
+  </script>
+
+  <!-- OTHER PROJECTS SECTION -->
+  <section class="other-projects-section">
+    <div class="other-projects-header">
+      <h2 class="other-projects-heading">Other things I've built.</h2>
+      <p class="other-projects-sub">Content strategies, social media reports, content calendars and more.</p>
+    </div>
+
+    <div class="op-pile-wrap">
+      <div class="op-pile">
+
+        <div class="op-card-wrap" style="left:10px;top:20px;transform:rotate(-3.5deg);z-index:1">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.10.27.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:268px;top:5px;transform:rotate(2deg);z-index:2">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.10.52.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:526px;top:18px;transform:rotate(-1.5deg);z-index:3">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.11.31.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:784px;top:8px;transform:rotate(3deg);z-index:4">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.12.07.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:20px;top:190px;transform:rotate(2.5deg);z-index:5">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.13.30.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:278px;top:178px;transform:rotate(-3deg);z-index:6">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.13.44.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:536px;top:195px;transform:rotate(1.5deg);z-index:7">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.14.19.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:794px;top:182px;transform:rotate(-2deg);z-index:8">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.17.54.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:10px;top:360px;transform:rotate(-2deg);z-index:9">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.30.48.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:268px;top:372px;transform:rotate(3.5deg);z-index:10">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.31.10.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:526px;top:358px;transform:rotate(-3deg);z-index:11">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.34.27.png" class="op-slide" alt=""></div></div>
+        </div>
+
+        <div class="op-card-wrap" style="left:784px;top:368px;transform:rotate(2deg);z-index:12">
+          <div class="op-screen"><div class="op-screen-inner"><img src="assets/images/other projects/Screenshot 2026-06-28 at 02.36.27.png" class="op-slide" alt=""></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .other-projects-section {
+      padding: 0px 48px 100px;
+      background: #FAF9F6;
+    }
+
+    .other-projects-header {
+      text-align: center;
+      padding-top: 8px;
+      margin-bottom: 40px;
+    }
+
+    .other-projects-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .other-projects-sub {
+      font-size: 14px;
+      color: #888;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .op-pile-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .op-pile {
+      position: relative;
+      height: 600px;
+    }
+
+    /* Wrapper - holds the rotation + position, handles hover lift */
+    .op-card-wrap {
+      position: absolute;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), z-index 0s;
+      cursor: default;
+    }
+
+    .op-card-wrap:hover {
+      transform: rotate(0deg) translateY(-28px) scale(1.07) !important;
+      z-index: 20 !important;
+    }
+
+    /* Mac screen - outer lid (silver aluminum) */
+    .op-screen {
+      width: 290px;
+      position: relative;
+      background: linear-gradient(160deg, #d4d4d4 0%, #b8b8b8 100%);
+      border-radius: 14px 14px 4px 4px;
+      padding: 5px 5px 0;
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.18),
+        0 14px 44px rgba(0,0,0,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    /* Inner black bezel */
+    .op-screen-inner {
+      background: #0d0d0d;
+      border-radius: 10px 10px 2px 2px;
+      padding: 8px 6px 6px;
+      position: relative;
+    }
+
+    /* Camera dot */
+    .op-screen-inner::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      margin: 0 auto 5px;
+    }
+
+    /* Bottom chin - slightly thicker silver edge */
+    .op-screen::after {
+      content: '';
+      display: block;
+      height: 6px;
+      background: linear-gradient(to bottom, #c0c0c0, #989898);
+      border-radius: 0 0 4px 4px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .op-slide {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 2px;
+      user-select: none;
+    }
+  </style>
+
+  <footer class="site-footer">
+    <p class="footer-text">Heyyy... looking forward to working with you</p>
+    <a href="mailto:onyinyeojukwu11@gmail.com" class="footer-btn">
+      <svg class="gmail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>
+      Email me
+    </a>
+  </footer>
+
+  <style>
+    .site-footer {
+      background: #1a1a1a;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(234, 67, 53, 0.1);
+      border: 1.5px solid rgba(234, 67, 53, 0.25);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 100px;
+      white-space: nowrap;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .footer-btn:hover {
+      background: rgba(234, 67, 53, 0.2);
+      transform: translateY(-2px);
+    }
+    .gmail-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── Hamburger (hidden on desktop) ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 210;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: transform 0.28s ease, opacity 0.2s ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ════════════════════════════════════════
+       MOBILE  (≤ 768px)
+       ════════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* NAV → hamburger */
+      nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        padding: 8px 20px 20px;
+        clip-path: inset(0 0 100% 0);
+        opacity: 0;
+        pointer-events: none;
+        transition: clip-path 0.32s ease, opacity 0.25s ease;
+      }
+      .nav-links.open {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links a {
+        padding: 15px 4px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-cta {
+        text-align: center;
+        margin-top: 14px;
+        padding: 14px 22px !important;
+        font-size: 15px !important;
+      }
+
+      /* PAGE HEAD */
+      .page-wrap { padding: 84px 20px 40px; }
+      .page-title { font-size: 44px; letter-spacing: -2px; }
+      .page-sub { font-size: 14px; }
+
+      /* CARDS → single column (fixes clipped headlines) */
+      .cards-grid { grid-template-columns: 1fr; gap: 18px; }
+      .pcard-title { font-size: 21px; padding-right: 48px; }
+
+      /* PROOF STRIPS → horizontal scroll instead of overlap */
+      .proof-strip, .proof-grid {
+        position: static;
+        height: auto;
+        margin: 4px 0 4px;
+        padding: 4px 24px 14px;
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .proof-strip::-webkit-scrollbar, .proof-grid::-webkit-scrollbar { display: none; }
+      .proof-img,
+      .proof-grid img {
+        position: static !important;
+        transform: none !important;
+        left: auto !important; top: auto !important;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+      .proof-img { width: 200px; height: 120px; }
+      .proof-grid img { width: 105px; height: 165px; }
+
+      /* EVIDENCE WALL */
+      .evidence-section { padding: 12px 0 48px; }
+      .evidence-header { padding: 0 22px; margin-bottom: 26px; }
+      .evidence-heading { font-size: 31px; letter-spacing: -1.2px; }
+      .evidence-img { height: 150px; width: 220px; }
+      .evidence-img.portrait { width: 110px; }
+
+      /* OTHER PROJECTS → horizontal swipe carousel of laptop mockups */
+      .other-projects-section { padding: 0 0 64px; }
+      .other-projects-header { padding: 0 22px; margin-bottom: 28px; }
+      .other-projects-heading { font-size: 32px; letter-spacing: -1.2px; }
+      .other-projects-sub { font-size: 13px; padding: 0 12px; }
+      .op-pile-wrap { max-width: 100%; }
+      .op-pile {
+        position: static;
+        height: auto;
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding: 6px 22px 16px;
+        scrollbar-width: none;
+      }
+      .op-pile::-webkit-scrollbar { display: none; }
+      .op-card-wrap {
+        position: static !important;
+        transform: none !important;
+        left: auto !important; top: auto !important;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+      }
+      .op-card-wrap:hover { transform: none !important; }
+      .op-screen { width: 270px; }
+
+      /* FOOTER */
+      .site-footer { padding: 36px 24px; }
+      .footer-text { font-size: 21px; }
+    }
+
+    @media (max-width: 380px) {
+      .page-title { font-size: 38px; }
+      .evidence-heading, .other-projects-heading { font-size: 28px; }
+      .op-screen { width: 250px; }
+    }
+  </style>
+
+  <script>
+    // ── Mobile nav toggle ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

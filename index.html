@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onyinye Ojukwu · Digital Marketer & Content Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #F4A261;
+      --secondary: #E76F51;
+      --dark: #264653;
+      --neutral: #ffffff;
+      --text: #1a1a1a;
+      --muted: #787878;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fff;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      height: 64px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--secondary) !important;
+      color: #fff !important;
+      padding: 9px 22px !important;
+      border-radius: 100px;
+      font-weight: 600 !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 64px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1200px;
+      padding: 16px 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Greeting badge - language only */
+    .greeting-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 100px;
+      padding: 7px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+      min-width: 130px;
+      text-align: center;
+      transition: opacity 0.35s ease;
+    }
+
+    /* Hero heading */
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.05;
+      text-align: center;
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+    }
+
+    .hero-title .name { color: var(--primary); }
+
+    .hero-title-2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* ── PHOTO STAGE ── */
+    .photo-stage {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 420px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .orange-circle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .hero-photo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 450px;
+      width: auto;
+      max-width: 340px;
+      object-fit: cover;
+      object-position: top center;
+      z-index: 2;
+      mix-blend-mode: multiply;
+      clip-path: ellipse(47% 52% at 50% 56%);
+    }
+
+    /* Floating pills */
+    .pill {
+      position: absolute;
+      z-index: 5;
+      background: var(--dark);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding: 9px 16px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(38,70,83,0.15);
+    }
+
+    .pill-1 { top: 20px;  left: 60px;  animation: fl1 4.2s ease-in-out infinite; }
+    .pill-2 { top: 10px;  right: 80px; animation: fl2 4.8s ease-in-out infinite; }
+    .pill-3 { top: 155px; right: 16px; animation: fl3 5.1s ease-in-out infinite; }
+    .pill-4 { top: 330px; right: 16px; animation: fl1 3.9s ease-in-out infinite; }
+    .pill-5 { top: 330px; left: 16px;  animation: fl2 4.4s ease-in-out infinite; }
+    .pill-6 { display: none; }
+
+    @keyframes fl1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+    @keyframes fl2 { 0%,100%{transform:translateY(-4px)} 50%{transform:translateY(7px)} }
+    @keyframes fl3 { 0%,100%{transform:translateY(4px)} 50%{transform:translateY(-7px)} }
+
+    /* Floating quote */
+    .quote-card {
+      position: absolute;
+      left: 0;
+      top: 44%;
+      transform: translateY(-50%);
+      background: #fff;
+      border-radius: 14px;
+      padding: 11px 13px 10px;
+      max-width: 148px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      z-index: 6;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .quote-arrow {
+      position: absolute;
+      right: -36px;
+      bottom: 10px;
+      width: 44px;
+      height: 34px;
+      pointer-events: none;
+    }
+
+    .quote-card .qmark {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      color: var(--secondary);
+      line-height: 0.9;
+      margin-bottom: 5px;
+    }
+
+    .quote-card p {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .quote-card .q-author {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-top: 8px;
+    }
+
+    /* YOE stat */
+    .yoe-card {
+      position: absolute;
+      right: 0;
+      top: 10%;
+      text-align: right;
+      z-index: 6;
+    }
+
+    .yoe-card .big {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .yoe-card .label {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    /* Decorative squiggle */
+    .squiggle {
+      position: absolute;
+      left: 60px;
+      top: 20%;
+      opacity: 0.7;
+      transition: opacity 0.5s ease;
+    }
+
+    /* ── Hover / tap to reveal the floating details ── */
+    .photo-stage { cursor: pointer; }
+
+    .pill, .yoe-card, .quote-card, .squiggle {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .photo-stage:hover .pill,
+    .photo-stage:hover .yoe-card,
+    .photo-stage:hover .quote-card,
+    .photo-stage:hover .squiggle,
+    .photo-stage.revealed .pill,
+    .photo-stage.revealed .yoe-card,
+    .photo-stage.revealed .quote-card,
+    .photo-stage.revealed .squiggle {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* keep the squiggle subtle when revealed */
+    .photo-stage:hover .squiggle,
+    .photo-stage.revealed .squiggle { opacity: 0.7; }
+
+    /* Discoverability hint (fades out once revealed) */
+    .reveal-hint {
+      position: absolute;
+      bottom: 58px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9;
+      background: rgba(38,70,83,0.92);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      animation: hint-bob 1.9s ease-in-out infinite;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .reveal-hint::before { content: '✨ '; }
+    .reveal-hint::after { content: 'Hover to explore'; }
+    @media (hover: none) {
+      .reveal-hint::after { content: 'Tap to explore'; }
+    }
+    @keyframes hint-bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-5px); }
+    }
+    .photo-stage:hover .reveal-hint,
+    .photo-stage.revealed .reveal-hint { opacity: 0; }
+
+    /* CTAs - liquid-glass segmented pill, overlapping the photo so it has
+       something colorful behind it to actually refract (real glass needs this) */
+    .hero-ctas {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: -46px;
+      padding: 4px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(20px) saturate(200%) brightness(1.15);
+      -webkit-backdrop-filter: blur(20px) saturate(200%) brightness(1.15);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow:
+        0 10px 28px rgba(20,28,38,0.20),
+        0 2px 8px rgba(20,28,38,0.10),
+        inset 0 1.5px 0 rgba(255,255,255,0.9),
+        inset 0 -8px 12px -6px rgba(255,255,255,0.4),
+        inset 1px 0 0 rgba(255,255,255,0.35),
+        inset -1px 0 0 rgba(255,255,255,0.35);
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    /* Curved specular highlight arc, like light hitting a glass edge */
+    .hero-ctas::before {
+      content: '';
+      position: absolute;
+      top: 2px; left: 6%;
+      width: 88%;
+      height: 42%;
+      border-radius: 100px;
+      background: linear-gradient(100deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(244,162,97,0.4), inset 0 1px 1px rgba(255,255,255,0.5);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 5px 16px rgba(244,162,97,0.5), inset 0 1px 1px rgba(255,255,255,0.5); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: background 0.22s ease;
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.18); }
+
+    /* ── STATS TICKER ── */
+    .stats-ticker-wrap {
+      background: var(--dark);
+      width: 100%;
+      overflow: hidden;
+      padding: 22px 0;
+      margin-top: 16px;
+    }
+
+    .stats-ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 28s linear infinite;
+    }
+
+    .stats-ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 32px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stats-ticker-item .sn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .stats-ticker-item .sl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.3;
+      max-width: 100px;
+    }
+
+    .stats-star {
+      color: var(--primary);
+      font-size: 18px;
+      padding: 0 8px;
+    }
+
+    /* ── SKILLS TICKER ── */
+    .skills-ticker-wrap {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      padding: 11px 0;
+    }
+
+    .skills-ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
+    }
+
+    .skills-ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 18px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      white-space: nowrap;
+    }
+
+    .ticker-star { color: var(--primary); font-size: 12px; }
+
+    @keyframes scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      background: #fff;
+      padding: 32px 0 60px 80px;
+      scroll-margin-top: 64px;
+      overflow: hidden;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: end;
+      min-height: 520px;
+    }
+
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .about-left {}
+
+    .about-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 58px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .about-hook {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .about-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .about-callout {
+      background: #FFF8F3;
+      border-left: 3px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .about-callout p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #555;
+      margin: 0 !important;
+    }
+
+    /* About photo */
+    .about-right {
+      position: relative;
+      align-self: end;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .about-circle {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .about-photo {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    /* ── EXPERIENCE & EDUCATION ── */
+    .exp-section {
+      background: #fff;
+      padding: 50px 80px 70px;
+      scroll-margin-top: 64px;
+    }
+
+    .exp-section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    /* Timeline */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: #e8e8e8;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .tl-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      border: 1.5px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .tl-dot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .tl-content { padding-top: 2px; }
+
+    .tl-role {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1px;
+    }
+
+    .tl-company {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 2px;
+    }
+
+    .tl-date {
+      font-size: 11px;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .tl-desc {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* Education */
+    .edu-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .edu-item {
+      background: #fafafa;
+      border: 1px solid #ebebeb;
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .edu-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .edu-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .edu-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 6px;
+      vertical-align: middle;
+      letter-spacing: 0.3px;
+    }
+
+    .edu-sub {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .edu-bullet {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Accolades callout */
+    .accolade-callout {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .accolade-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .accolade-handwritten {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .accolade-arrow {
+      width: 60px;
+      height: 30px;
+      transform: rotate(-10deg);
+      margin-left: 8px;
+    }
+
+    .accolade-linkedin {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0A66C2;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    /* Mini projects */
+    .mini-projects {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mini-project-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #bbb;
+      margin-bottom: 4px;
+    }
+
+    .mini-project-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .mini-project-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #f3f3f3;
+    }
+
+    .mini-project-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mini-project-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .mini-project-sub {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: #fafafa;
+      padding: 40px 80px;
+    }
+
+    .skills-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .skills-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      margin-bottom: 36px;
+    }
+
+    .skills-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .skill-pill {
+      border: 1.5px solid #ccc;
+      border-radius: 100px;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      background: #fff;
+    }
+
+    /* ── TOOLS & CERTS ── */
+    .tools-section {
+      background: #fafafa;
+      padding: 0 80px 50px;
+    }
+
+    .tools-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .tool-group {
+      background: #fff;
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .tool-group-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .tool-icons { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+    .tool-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #f3f3f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .tool-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .tool-names {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .tool-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* Certs */
+    .cert-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .cert-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+    }
+
+    .cert-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #f3f3f3;
+    }
+
+    .cert-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cert-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .cert-org {
+      font-size: 10px;
+      color: #aaa;
+    }
+
+    /* ── Hamburger (hidden on desktop) ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 210;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: transform 0.28s ease, opacity 0.2s ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ════════════════════════════════════════
+       MOBILE  (≤ 768px)
+       ════════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* NAV → hamburger */
+      nav { padding: 0 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        padding: 8px 20px 20px;
+        clip-path: inset(0 0 100% 0);
+        opacity: 0;
+        pointer-events: none;
+        transition: clip-path 0.32s ease, opacity 0.25s ease;
+      }
+      .nav-links.open {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links a {
+        padding: 15px 4px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-cta {
+        text-align: center;
+        margin-top: 14px;
+        padding: 14px 22px !important;
+        font-size: 15px !important;
+      }
+
+      /* HERO */
+      .hero { min-height: auto; }
+      .hero-content { padding: 8px 20px 0; }
+      .greeting-badge { font-size: 13px; padding: 6px 20px; min-width: 110px; }
+      .hero-title { font-size: 33px; letter-spacing: -1.2px; white-space: normal; }
+      .hero-title-2 { font-size: 16px; margin-bottom: 10px; max-width: 280px; }
+
+      /* HERO photo stage - circle + photo matched to desktop proportions */
+      .photo-stage { height: 390px; max-width: 100%; }
+      .orange-circle { width: 285px; height: 285px; }
+      .hero-photo { height: 340px; max-width: 255px; }
+
+      .squiggle { display: none; }
+
+      /* Social-proof quote card (lower-left, like desktop) */
+      .quote-card {
+        display: block;
+        top: auto; bottom: 8px; left: -4px;
+        transform: none;
+        max-width: 144px;
+        padding: 10px 12px 9px;
+      }
+      .quote-card .qmark { font-size: 22px; margin-bottom: 4px; }
+      .quote-card p { font-size: 10px; line-height: 1.5; }
+      .quote-card .q-author { font-size: 9px; margin-top: 6px; }
+      .quote-arrow { display: none; }
+
+      /* 7+ Years → top-right, like desktop */
+      .yoe-card { top: 2px; right: 0; left: auto; bottom: auto; text-align: right; }
+      .yoe-card .big { font-size: 36px; letter-spacing: -1.5px; }
+      .yoe-card .label { font-size: 10px; }
+
+      .pill { font-size: 10px; padding: 7px 12px; gap: 5px; }
+      .pill-1 { top: 30px;  left: -4px;  right: auto; }
+      .pill-2 { top: 100px; right: -4px; left: auto; }
+      .pill-3 { top: 188px; right: -6px; left: auto; }
+      .pill-4 { top: 292px; right: -4px; left: auto; }
+      .pill-5 { top: 120px; left: -6px;  right: auto; }
+      .pill-6 { display: none; }
+
+      .hero-ctas { margin-top: -40px; flex-wrap: nowrap; padding: 4px; }
+      .btn-primary { font-size: 12px; padding: 9px 17px; }
+      .btn-outline { font-size: 12px; padding: 9px 16px; }
+
+      /* TICKERS */
+      .stats-ticker-wrap { padding: 18px 0; margin-top: 8px; }
+      .stats-ticker-item { padding: 0 22px; }
+      .stats-ticker-item .sn { font-size: 26px; }
+
+      /* ABOUT → heading, profile photo, then text */
+      .about-section { padding: 44px 22px 48px; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        min-height: auto;
+      }
+      .about-heading { font-size: 38px; letter-spacing: -1.5px; margin-bottom: 18px; }
+      .about-right {
+        order: 1;
+        justify-content: center;
+        align-items: flex-end;
+        height: auto;
+        overflow: visible;
+      }
+      .about-left { order: 2; justify-content: flex-start; }
+      .about-circle {
+        width: 300px; height: 300px;
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+      }
+      .about-photo { width: 100%; max-width: 360px; margin: 0 auto; display: block; }
+      .about-hook { font-size: 19px; }
+
+      /* EXPERIENCE + EDUCATION → single column */
+      .exp-section { padding: 44px 22px 56px; }
+      .exp-section-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .section-heading { font-size: 40px; letter-spacing: -1.5px; margin-bottom: 20px; }
+
+      /* SKILLS */
+      .skills-section { padding: 40px 22px; }
+      .skills-heading { font-size: 38px; letter-spacing: -1.5px; margin-bottom: 26px; }
+      .skill-pill { font-size: 12px; padding: 8px 16px; }
+
+      /* TOOLS + CERTS → single column */
+      .tools-section { padding: 0 22px 44px; }
+      .tools-inner { grid-template-columns: 1fr; gap: 28px; }
+      .tools-grid { grid-template-columns: 1fr; }
+
+      /* Tap-to-expand on mobile */
+      .m-collapse {
+        cursor: pointer;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 0;
+        padding-bottom: 14px;
+        border-bottom: 1.5px solid #ececec;
+        user-select: none;
+      }
+      .m-collapse::after {
+        content: '+';
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 1;
+        color: var(--secondary);
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+        align-self: center;
+      }
+      .m-collapse.open::after { content: '−'; }
+      .m-collapse-body {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      }
+      .m-collapse-body.open {
+        max-height: 4000px;
+        opacity: 1;
+        margin-top: 24px;
+      }
+
+      /* FOOTER */
+      .site-footer { padding: 36px 24px; }
+      .footer-text { font-size: 21px; }
+    }
+
+    /* Extra squeeze for very small phones */
+    @media (max-width: 380px) {
+      .hero-title { font-size: 29px; }
+      .photo-stage { height: 380px; }
+      .hero-photo { height: 340px; max-width: 210px; }
+      .orange-circle { width: 205px; height: 205px; }
+      .pill { font-size: 9px; padding: 6px 10px; }
+      .quote-card { max-width: 140px; }
+      .quote-card p { font-size: 9.5px; }
+      .about-heading, .section-heading, .skills-heading { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-logo" href="index.html">Onyinye.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="hire.html" class="nav-cta">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+
+      <!-- Rotating language badge only -->
+      <div class="greeting-badge" id="greeting">Hello!</div>
+
+      <!-- Heading line 1 -->
+      <h1 class="hero-title">I'm <span class="name">Onyinye</span> 👋,</h1>
+
+      <!-- Heading line 2 -->
+      <h2 class="hero-title-2">A Digital Marketer &amp; Content Strategist</h2>
+
+      <!-- Photo stage -->
+      <div class="photo-stage">
+
+        <!-- Decorative squiggle (like in reference) -->
+        <svg class="squiggle" width="48" height="60" viewBox="0 0 48 60" fill="none">
+          <path d="M8 52 C8 52 4 36 20 28 C36 20 40 8 40 8" stroke="#F4A261" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M20 8 L40 8 L40 28" stroke="#F4A261" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+
+        <!-- Floating quote -->
+        <div class="quote-card">
+          <div class="qmark">"</div>
+          <p>She's data-driven, creative, and always delivers results that actually move the needle.</p>
+          <div class="q-author">Samson Pullen</div>
+          <!-- curved arrow pointing toward face -->
+          <svg class="quote-arrow" viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 28 C10 28 18 10 40 6" stroke="#F4A261" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M34 2 L40 6 L36 12" stroke="#F4A261" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+
+        <!-- YOE -->
+        <div class="yoe-card">
+          <div class="big">7+</div>
+          <div class="label">Years of<br>Experience</div>
+        </div>
+
+        <!-- Orange circle -->
+        <div class="orange-circle"></div>
+
+        <!-- Photo -->
+        <img src="assets/images/hero.png" alt="Onyinye Ojukwu, Digital Marketer" class="hero-photo">
+
+        <!-- Floating pills -->
+        <div class="pill pill-1">✍️ Copywriting</div>
+        <div class="pill pill-2">📊 SEO / SEM</div>
+        <div class="pill pill-3">📧 Email Marketing</div>
+        <div class="pill pill-4">🚀 Paid Ads</div>
+        <div class="pill pill-5">📱 Social Media</div>
+        <div class="pill pill-6">🤝 Partnerships</div>
+
+        <!-- Reveal hint -->
+        <div class="reveal-hint" aria-hidden="true"></div>
+
+      </div>
+
+      <!-- CTAs in white gap below photo, above ticker -->
+      <div class="hero-ctas">
+        <a href="projects.html" class="btn-primary">View my work ↗</a>
+        <a href="hire.html" class="btn-outline">Hire me</a>
+      </div>
+
+    </div>
+
+    <!-- Stats scrolling ticker -->
+    <div class="stats-ticker-wrap">
+      <div class="stats-ticker-track" id="statsTicker"></div>
+    </div>
+
+    <!-- Skills scrolling ticker -->
+    <div class="skills-ticker-wrap">
+      <div class="skills-ticker-track" id="skillsTicker"></div>
+    </div>
+
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+
+      <div class="about-left">
+        <h2 class="about-heading">a little<br>about me.</h2>
+
+        <p class="about-hook">You can call it curiosity.</p>
+
+        <div class="about-body">
+          <p>I've always been fascinated by why people pay attention to some things and ignore others.</p>
+
+          <p>Why one piece of content gets shared thousands of times while another disappears unnoticed. Why certain ads feel impossible to scroll past. That curiosity is what pulled me into marketing.</p>
+
+          <div class="about-callout">
+            <p>Over the years, I've worked across content, SEO, email marketing, creator/B2B partnership, social media, and paid advertising, because I wanted to understand how each piece contributes to growth.</p>
+          </div>
+
+          <p>Today, I use that understanding to help brands earn attention, build audiences, and create marketing that people actually care about.</p>
+
+          <p>I grew up in Lagos, and that curiosity still drives everything I do.</p>
+
+          <p>I'm constantly learning, testing ideas (DAILY), and looking for better ways to connect business with the people they serve.</p>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <div class="about-circle"></div>
+        <img src="assets/images/Real.about me.png" alt="Onyinye Ojukwu" class="about-photo">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE & EDUCATION ── -->
+  <section class="exp-section" id="experience">
+    <div class="exp-section-inner">
+
+      <!-- Left: Experience -->
+      <div>
+        <h2 class="section-heading">experience.</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/11.png" alt="Hivemind"></div>
+            <div class="tl-content">
+              <div class="tl-role">Marketing Manager & Partnerships Lead</div>
+              <div class="tl-company">Hivemind HR · San Francisco, US (Remote)</div>
+              <div class="tl-date">November 2024 – Present</div>
+              <div class="tl-desc">Led marketing for an AI recruiting platform. Drove product marketing, demand gen, and creator partnership programs. Planned and executed the Product Hunt launch, helping secure Product of the Day recognition. Secured 3 podcast appearances in Q1 2026.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/10.png" alt="GoNomad"></div>
+            <div class="tl-content">
+              <div class="tl-role">Content & Marketing Manager</div>
+              <div class="tl-company">GoNomad · US (Remote/Contract)</div>
+              <div class="tl-date">April 2024 – Present</div>
+              <div class="tl-desc">Managed weekly email campaigns, automation flows, and newsletter strategy. Led blog SEO with Yoast, SEMrush & Ubersuggest. Wrote UI copy for The GoFlex product. Handled full content marketing pipeline.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/12.png" alt="RocketDevs"></div>
+            <div class="tl-content">
+              <div class="tl-role">Social Media & Marketing Manager</div>
+              <div class="tl-company">RocketDevs · US (Remote/Contract)</div>
+              <div class="tl-date">June 2024 – August 2025</div>
+              <div class="tl-desc">Drove organic growth through blog SEO and content strategy targeting startup founders. Ranked content in Google's AI Overview. Built Reddit community engagement strategy across startup subreddits with zero ad spend.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/9.png" alt="Bami Brands"></div>
+            <div class="tl-content">
+              <div class="tl-role">Project Manager & Content Writer</div>
+              <div class="tl-company">Bami Brands · Contract</div>
+              <div class="tl-date">December 2023 – Present</div>
+              <div class="tl-desc">Personal branding for individuals. Content strategy, script writing, and end-to-end project management for brand campaigns.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/14.png" alt="Kijagold Network"></div>
+            <div class="tl-content">
+              <div class="tl-role">Social Media Manager / Content Writer</div>
+              <div class="tl-company">Kijagold Network · Freelance</div>
+              <div class="tl-date">May 2023 – August 2023</div>
+              <div class="tl-desc">Managed social media accounts for multiple client brands including Tutu's Cupcakes and Nurtur'd Designs. Created content calendars, copy, and grew engagement across Instagram and TikTok.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/7.png" alt="TEDx University of Benin"></div>
+            <div class="tl-content">
+              <div class="tl-role">Marketing & Communications Lead</div>
+              <div class="tl-company">TEDxUniversityofBenin · Benin City</div>
+              <div class="tl-date">June 2022 – January 2023</div>
+              <div class="tl-desc">Led full marketing and communications strategy for TEDx event. Managed social accounts across Instagram, LinkedIn, and Twitter. Drove attendance growth and brand visibility.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"><img src="assets/images/6.png" alt="Pullen Creatives"></div>
+            <div class="tl-content">
+              <div class="tl-role">Community Manager → Digital Marketing Specialist</div>
+              <div class="tl-company">Pullen Creatives · Lagos</div>
+              <div class="tl-date">January 2021 – October 2022</div>
+              <div class="tl-desc">Managed social media and community for 5 client brands simultaneously across tech, food, entertainment, and lifestyle. Built content calendars, wrote copy, and delivered weekly performance reports. Promoted to Digital Marketing Specialist for expanded strategy and SEO work.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Education -->
+      <div>
+        <h2 class="section-heading">education.</h2>
+        <div class="edu-list">
+
+          <div class="edu-item">
+            <div class="edu-icon" style="background:#f3f0f8; padding:2px; overflow:hidden;">
+              <img src="assets/images/13.png" alt="University of Benin" style="width:100%;height:100%;object-fit:contain;">
+            </div>
+            <div>
+              <div class="edu-title">University of Benin <span class="edu-badge">BA Hons</span></div>
+              <div class="edu-sub">International Studies & Diplomacy · Graduated Dec 2022</div>
+              <div class="edu-bullet">Benin City, Edo State</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Accolades -->
+        <h2 class="section-heading" style="margin-top:40px;">accolades.</h2>
+        <p style="font-size:13px;line-height:1.65;color:#555;margin-bottom:20px;">Grew <strong>AdsForCopy</strong> to <strong>15,000+ followers</strong> with a <strong>7.25 ROAS</strong> on Meta & TikTok, through consistent ad breakdowns and content strategy.</p>
+
+        <div class="accolade-callout">
+          <div class="accolade-left">
+            <div class="accolade-handwritten">Wait,<br>there's more!</div>
+            <svg class="accolade-arrow" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 20 C20 20 36 8 54 6" stroke="#F4A261" stroke-width="2" stroke-linecap="round"/>
+              <path d="M48 2 L54 6 L50 12" stroke="#F4A261" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <a href="https://www.linkedin.com/in/onyinye-favourr/" target="_blank" class="accolade-linkedin">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <div>
+              <div style="font-size:11px;font-weight:800;letter-spacing:0.3px;">See on My LinkedIn</div>
+              <div style="font-size:10px;opacity:0.85;margin-top:1px;">4+ Years Experience</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Notable Projects -->
+        <div class="mini-projects">
+          <div class="mini-project-label">notable projects</div>
+
+          <div class="mini-project-item">
+            <div class="mini-project-logo"><img src="assets/images/11.png" alt="Hivemind"></div>
+            <div>
+              <div class="mini-project-title">Creator & B2B Partnership Program</div>
+              <div class="mini-project-sub">Hivemind · Built and managed a 55+ creator partner program from scratch. Outreach pipelines, lead magnets, and full partnership strategy.</div>
+            </div>
+          </div>
+
+          <div class="mini-project-item">
+            <div class="mini-project-logo"><img src="assets/images/10.png" alt="GoNomad"></div>
+            <div>
+              <div class="mini-project-title">Content & Email Growth · GoNomad</div>
+              <div class="mini-project-sub">GoNomad · Full content marketing pipeline: weekly email campaigns, automation flows, blog SEO, and UI copy for The GoFlex product.</div>
+            </div>
+          </div>
+
+          <div class="mini-project-item">
+            <div class="mini-project-logo" style="background:#000;"><img src="assets/images/7.png" alt="TEDx"></div>
+            <div>
+              <div class="mini-project-title">TEDx Marketing & Communications</div>
+              <div class="mini-project-sub">TEDxUniversityofBenin · Led the full marketing and comms strategy for the TEDx event, covering social, PR, and audience growth across Instagram, LinkedIn, and Twitter.</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section class="skills-section">
+    <div class="skills-inner">
+      <h2 class="skills-heading">✦ skills.</h2>
+      <div class="skills-pills">
+        <span class="skill-pill">Content Creation & Strategy</span>
+        <span class="skill-pill">Email Marketing & Newsletters</span>
+        <span class="skill-pill">SEO / SEM</span>
+        <span class="skill-pill">Social Media Management</span>
+        <span class="skill-pill">Meta & TikTok Paid Ads</span>
+        <span class="skill-pill">Creator & B2B Partnerships</span>
+        <span class="skill-pill">CRM & Automation</span>
+        <span class="skill-pill">Project Management</span>
+        <span class="skill-pill">Audience Growth</span>
+        <span class="skill-pill">Brand Strategy</span>
+        <span class="skill-pill">Copywriting</span>
+        <span class="skill-pill">Analytics & Reporting</span>
+        <span class="skill-pill">UI / Product Copy</span>
+        <span class="skill-pill">Community Management</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOOLS & CERTIFICATIONS ── -->
+  <section class="tools-section">
+    <div class="tools-inner">
+
+      <!-- Tools -->
+      <div>
+        <h2 class="section-heading m-collapse" data-count="20+ tools">tools.</h2>
+        <div class="tools-grid m-collapse-body">
+
+          <div class="tool-group">
+            <div class="tool-group-label">Content & SEO</div>
+            <div class="tool-icons">
+              <div class="tool-icon"><img src="assets/images/WordPress-logotype-wmark.png" alt="WordPress"></div>
+              <div class="tool-icon"><img src="assets/images/images.png" alt="SEMrush"></div>
+              <div class="tool-icon"><img src="assets/images/images.jpg" alt="Yoast"></div>
+              <div class="tool-icon"><img src="assets/images/KEMTWLM4E4OF.png" alt="Ubersuggest"></div>
+              <div class="tool-icon"><img src="assets/images/images-1.png" alt="Google Search Console"></div>
+              <div class="tool-icon"><img src="assets/images/images-2.png" alt="Google Analytics"></div>
+            </div>
+            <div class="tool-names">
+              <span class="tool-dot"></span>WordPress &nbsp;<span class="tool-dot"></span>SEMrush &nbsp;<span class="tool-dot"></span>Yoast<br>
+              <span class="tool-dot"></span>Ubersuggest &nbsp;<span class="tool-dot"></span>Google Search Console &nbsp;<span class="tool-dot"></span>Google Analytics
+            </div>
+          </div>
+
+          <div class="tool-group">
+            <div class="tool-group-label">Email Marketing</div>
+            <div class="tool-icons">
+              <div class="tool-icon"><img src="assets/images/images-3.png" alt="ConvertKit"></div>
+              <div class="tool-icon"><img src="assets/images/images-1.jpg" alt="Beehiiv"></div>
+              <div class="tool-icon"><img src="assets/images/mailchimp_icon_146054.webp" alt="Mailchimp"></div>
+              <div class="tool-icon"><img src="assets/images/images-4.png" alt="FluentCRM"></div>
+              <div class="tool-icon"><img src="assets/images/images-5.png" alt="Mailjet"></div>
+            </div>
+            <div class="tool-names">
+              <span class="tool-dot"></span>ConvertKit &nbsp;<span class="tool-dot"></span>Beehiiv<br>
+              <span class="tool-dot"></span>Mailchimp &nbsp;<span class="tool-dot"></span>FluentCRM &nbsp;<span class="tool-dot"></span>Mailjet
+            </div>
+          </div>
+
+          <div class="tool-group">
+            <div class="tool-group-label">Ads & Growth</div>
+            <div class="tool-icons">
+              <div class="tool-icon"><img src="assets/images/images-2.jpg" alt="Meta Ads"></div>
+              <div class="tool-icon"><img src="assets/images/images-6.png" alt="TikTok Ads"></div>
+              <div class="tool-icon"><img src="assets/images/hootsuite-logo-png_seeklogo-446074.png" alt="Hootsuite"></div>
+            </div>
+            <div class="tool-names">
+              <span class="tool-dot"></span>Meta Ads Manager &nbsp;<span class="tool-dot"></span>TikTok Ads<br>
+              <span class="tool-dot"></span>Facebook Ads Manager &nbsp;<span class="tool-dot"></span>Hootsuite
+            </div>
+          </div>
+
+          <div class="tool-group">
+            <div class="tool-group-label">CRM & Project Management</div>
+            <div class="tool-icons">
+              <div class="tool-icon"><img src="assets/images/HUBS-3bd277ce.png" alt="HubSpot"></div>
+              <div class="tool-icon"><img src="assets/images/images-7.png" alt="Zoho CRM"></div>
+              <div class="tool-icon"><img src="assets/images/clickup.png" alt="ClickUp"></div>
+              <div class="tool-icon"><img src="assets/images/images-8.png" alt="Notion"></div>
+              <div class="tool-icon"><img src="assets/images/images-3.jpg" alt="Trello"></div>
+              <div class="tool-icon"><img src="assets/images/images-9.png" alt="Lark"></div>
+              <div class="tool-icon"><img src="assets/images/slack-circle-logo-editable-slack-app-for-web-mobile-and-print-projects-free-png.webp" alt="Slack"></div>
+            </div>
+            <div class="tool-names">
+              <span class="tool-dot"></span>HubSpot &nbsp;<span class="tool-dot"></span>Zoho CRM &nbsp;<span class="tool-dot"></span>ClickUp<br>
+              <span class="tool-dot"></span>Notion &nbsp;<span class="tool-dot"></span>Trello &nbsp;<span class="tool-dot"></span>Lark &nbsp;<span class="tool-dot"></span>Slack
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div>
+        <h2 class="section-heading m-collapse" data-count="7 certificates">certification.</h2>
+        <div class="cert-list m-collapse-body">
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/og-meta-blueprint.png" alt="Meta Blueprint"></div>
+            <div>
+              <div class="cert-name">Meta Certified Media Buying Professional</div>
+              <div class="cert-org">Meta Blueprint</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/og-meta-blueprint.png" alt="Meta Blueprint"></div>
+            <div>
+              <div class="cert-name">Meta Certified Performance Marketing Specialist</div>
+              <div class="cert-org">Meta Blueprint</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/og-meta-blueprint.png" alt="Meta Blueprint"></div>
+            <div>
+              <div class="cert-name">Meta Social Media Marketing Certification</div>
+              <div class="cert-org">Meta Blueprint</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/images-6.png" alt="TikTok"></div>
+            <div>
+              <div class="cert-name">TikTok Media Buying Professional</div>
+              <div class="cert-org">TikTok Academy</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/HUBS-3bd277ce.png" alt="HubSpot"></div>
+            <div>
+              <div class="cert-name">Full Digital Marketing Course</div>
+              <div class="cert-org">HubSpot Academy</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon"><img src="assets/images/HUBS-3bd277ce.png" alt="HubSpot"></div>
+            <div>
+              <div class="cert-name">Ultimate Email Marketing Course</div>
+              <div class="cert-org">HubSpot Academy</div>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-icon" style="background:#0A66C2; color:#fff; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:800;">in</div>
+            <div>
+              <div class="cert-name">Project Management Certificate</div>
+              <div class="cert-org">LinkedIn Learning</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // ── Mobile nav toggle ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    // Close menu when a link is tapped
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ── Mobile tap-to-expand (tools / certifications) ──
+    document.querySelectorAll('.m-collapse').forEach(head => {
+      head.addEventListener('click', () => {
+        const body = head.nextElementSibling;
+        head.classList.toggle('open');
+        if (body) body.classList.toggle('open');
+      });
+    });
+
+    // ── Tap/click the photo to reveal the floating details (mobile + desktop) ──
+    const photoStage = document.querySelector('.photo-stage');
+    if (photoStage) {
+      photoStage.addEventListener('click', () => {
+        photoStage.classList.toggle('revealed');
+      });
+    }
+
+    // ── Rotating language greeting ──
+    const greetings = ['Hello!', 'Bonjour!', '你好!', '¡Hola!', 'مرحبًا!'];
+    let gi = 0;
+    const greetingEl = document.getElementById('greeting');
+
+    setInterval(() => {
+      greetingEl.style.opacity = '0';
+      setTimeout(() => {
+        gi = (gi + 1) % greetings.length;
+        greetingEl.textContent = greetings[gi];
+        greetingEl.style.opacity = '1';
+      }, 350);
+    }, 2200);
+
+    // ── Stats ticker ──
+    const stats = [
+      { n: '100+', l: 'Creator Partners' },
+      { n: '15K+', l: 'Followers Grown on TikTok' },
+      { n: '7.25', l: 'ROAS Achieved' },
+      { n: '7+',   l: 'Years of Experience' },
+      { n: '11+',  l: 'Brands Helped' },
+      { n: '15+',  l: 'Roles & Projects' },
+    ];
+
+    const statsTicker = document.getElementById('statsTicker');
+    let sHtml = '';
+    for (let i = 0; i < 3; i++) {
+      stats.forEach(s => {
+        sHtml += `<div class="stats-ticker-item">
+          <div class="sn">${s.n}</div>
+          <div class="sl">${s.l}</div>
+        </div><span class="stats-star">✦</span>`;
+      });
+    }
+    statsTicker.innerHTML = sHtml;
+
+    // ── Skills ticker ──
+    const skills = [
+      'Content Strategy', 'Email Marketing', 'SEO / SEM',
+      'Social Media Management', 'Meta Ads', 'TikTok Ads',
+      'Copywriting', 'CRM & Automation', 'Creator Partnerships',
+      'Newsletter Strategy', 'Project Management', 'Brand Growth'
+    ];
+
+    const skillsTicker = document.getElementById('skillsTicker');
+    let skHtml = '';
+    for (let i = 0; i < 2; i++) {
+      skills.forEach(s => {
+        skHtml += `<div class="skills-ticker-item">${s}<span class="ticker-star">✦</span></div>`;
+      });
+    }
+    skillsTicker.innerHTML = skHtml;
+  </script>
+
+  <footer class="site-footer">
+    <p class="footer-text">Heyyy... looking forward to working with you</p>
+    <a href="mailto:onyinyeojukwu11@gmail.com" class="footer-btn">
+      <svg class="gmail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/></svg>
+      Email me
+    </a>
+  </footer>
+
+  <style>
+    .site-footer {
+      background: #1a1a1a;
+      padding: 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(234, 67, 53, 0.1);
+      border: 1.5px solid rgba(234, 67, 53, 0.25);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 100px;
+      white-space: nowrap;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .footer-btn:hover {
+      background: rgba(234, 67, 53, 0.2);
+      transform: translateY(-2px);
+    }
+    .gmail-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+  </style>
+
+</body>
+</html>
