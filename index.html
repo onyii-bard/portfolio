@@ -1814,5 +1814,201 @@
     }
   </style>
 
+  <!-- ── LEAD MAGNET: gift card + corner dock ── -->
+  <div class="gift-card" id="giftCard">
+    <button class="gift-close" id="giftClose" aria-label="Close">&times;</button>
+    <div class="gift-emoji">🎁</div>
+    <div class="gift-title">A gift, from me to you.</div>
+    <p class="gift-body">Six practical marketing skills I use myself, SEO, outreach, content, email, analytics, and CRM, packed into a free toolkit. No email required.</p>
+    <a class="gift-btn" href="assets/The-6-Skill-Marketers-Toolkit.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download the toolkit
+    </a>
+  </div>
+
+  <a class="gift-dock" id="giftDock" href="assets/The-6-Skill-Marketers-Toolkit.pdf" download>
+    <span class="gift-dock-emoji">🎁</span>
+    <span class="gift-dock-text">I'll be here when you need me</span>
+    <button class="gift-dock-close" id="giftDockClose" aria-label="Dismiss">&times;</button>
+  </a>
+
+  <style>
+    .gift-card, .gift-dock {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 300;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Full card */
+    .gift-card {
+      width: 300px;
+      background: var(--dark);
+      border-radius: 20px;
+      padding: 26px 24px 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .gift-card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .gift-close {
+      position: absolute;
+      top: 12px; right: 14px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px;
+      transition: color 0.2s ease;
+    }
+    .gift-close:hover { color: #fff; }
+    .gift-emoji { font-size: 30px; margin-bottom: 10px; }
+    .gift-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 19px;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+    .gift-body {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 18px;
+    }
+    .gift-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 100px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .gift-btn:hover { background: var(--secondary); transform: translateY(-2px); }
+    .gift-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* Corner dock */
+    .gift-dock {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 100px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+      opacity: 0;
+      transform: translateY(16px) scale(0.94);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.2s ease;
+    }
+    .gift-dock.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .gift-dock:hover { box-shadow: 0 14px 34px rgba(0,0,0,0.3); }
+    .gift-dock-emoji { font-size: 16px; }
+    .gift-dock-text {
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .gift-dock-close {
+      background: rgba(255,255,255,0.14);
+      border: none;
+      color: #fff;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 13px;
+      line-height: 1;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .gift-dock-close:hover { background: rgba(255,255,255,0.3); }
+
+    @media (max-width: 480px) {
+      .gift-card, .gift-dock { right: 16px; bottom: 16px; }
+      .gift-card { width: calc(100vw - 32px); max-width: 320px; }
+      .gift-dock-text { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var DISMISS_KEY = 'giftDismissed';
+      if (localStorage.getItem(DISMISS_KEY) === '1') return;
+
+      var card = document.getElementById('giftCard');
+      var dock = document.getElementById('giftDock');
+      var closeBtn = document.getElementById('giftClose');
+      var dockCloseBtn = document.getElementById('giftDockClose');
+      var experienceEl = document.getElementById('experience');
+      if (!card || !dock || !experienceEl) return;
+
+      var hasShownCard = false;
+      var dismissed = false;
+
+      function showCard() {
+        if (dismissed) return;
+        dock.classList.remove('show');
+        card.classList.add('show');
+        hasShownCard = true;
+      }
+      function dockIt() {
+        if (dismissed || !hasShownCard) return;
+        card.classList.remove('show');
+        dock.classList.add('show');
+      }
+      function dismissForever() {
+        dismissed = true;
+        card.classList.remove('show');
+        dock.classList.remove('show');
+        localStorage.setItem(DISMISS_KEY, '1');
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            showCard();
+          } else if (hasShownCard) {
+            dockIt();
+          }
+        });
+      }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' });
+      observer.observe(experienceEl);
+
+      closeBtn.addEventListener('click', function () {
+        card.classList.remove('show');
+        dock.classList.add('show');
+        if (!hasShownCard) hasShownCard = true;
+      });
+      dockCloseBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dismissForever();
+      });
+    })();
+  </script>
+
 </body>
 </html>
